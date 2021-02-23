@@ -19,5 +19,18 @@ namespace ProcessPayment.Data
         {
             base.OnModelCreating(builder);
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
+
+        #region "DbSets"
+        public virtual DbSet<PRProcessPayment> PRProcessPayment { get; set; }
+        public virtual DbSet<PaymentState> PaymentState { get; set; }
+        #endregion
     }
 }
